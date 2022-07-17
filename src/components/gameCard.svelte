@@ -5,10 +5,10 @@
 
 <a
 	class="p-6 bg-gray-100 text-gray-800 text-center rounded-md shadow-sm hover:shadow-md flex flex-col items-center"
-	href="/game/{item.id}"
+	href="/games/{item.id}"
 >
 	<img src={item.bgg.thumbnail} alt={item.name} />
-	<h2>
+	<h2 class="uppercase text-xl">
 		{item.name}
 	</h2>
 </a>

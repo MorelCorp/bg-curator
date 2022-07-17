@@ -10,13 +10,12 @@ export async function GET() {
 		};
 	}
 
+	console.log('Fetching a games local copy');
+
 	const games: game[] = [];
-	// gamesSnap.docs.forEach((doc) => {
-	gamesSnap.docs.slice(0, 20).forEach((doc) => {
+	gamesSnap.docs.forEach((doc) => {
 		games.push(doc.data() as game);
 	});
-
-	// console.log('ALL THE GAMES: ', games.length);
 
 	return {
 		status: 200,

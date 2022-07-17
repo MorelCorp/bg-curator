@@ -26,6 +26,15 @@ export const db = getFirestore();
 // export const STATE_CHANGED = firebase.storage.TaskEvent.STATE_CHANGED;
 
 export const gamesCollection = collection(db, 'games');
-export const userDoc = (userId: string) => doc(db, 'users', userId);
-export const gameDoc = (gameId: string) => doc(db, 'games', gameId);
-export const gamesDoc = () => getDocs(query(collection(db, 'games')));
+
+export function userDoc(userId: string) {
+	return doc(db, 'users', userId);
+}
+
+export function gameDoc(gameId: string) {
+	return doc(db, 'games', gameId);
+}
+
+export function gamesDoc() {
+	return getDocs(query(collection(db, 'games')));
+}
