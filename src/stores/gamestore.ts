@@ -3,6 +3,8 @@ import type { game } from '../modules/firebase/types';
 
 import { writable } from 'svelte/store';
 
+export const gameStoreReady = writable<boolean>(false);
+
 export const games = writable<game[]>([]);
 
 const fetchGames = async () => {
@@ -16,6 +18,8 @@ const fetchGames = async () => {
 	});
 
 	games.set(loadedGames);
+
+	gameStoreReady.set(true);
 };
 
 fetchGames();

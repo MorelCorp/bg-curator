@@ -1,13 +1,13 @@
 <script lang="ts" context="module">
-	import { games } from '../stores/gamestore';
+	import { gameStoreReady, games } from '../stores/gamestore';
+	import type { game } from '../modules/firebase/types';
 	import GameCard from '../components/gameCard.svelte';
+	import Loading from '../components/loading.svelte';
 </script>
 
 <script lang="ts">
-	let gamesSubset = $games.slice(0, 20);
-
 	let searchTerm = '';
-	let filteredGames = [...gamesSubset];
+	let filteredGames: game[] = [];
 
 	$: {
 		if (searchTerm) {
@@ -18,7 +18,7 @@
 				filteredGames = filteredGames.slice(0, 20);
 			}
 		} else {
-			filteredGames = [...gamesSubset];
+			filteredGames = [...$games.slice(0, 20)];
 		}
 	}
 </script>
@@ -38,7 +38,11 @@
 />
 
 <div class="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
-	{#each filteredGames as game}
-		<GameCard item={game} />
-	{/each}
+	{#if !$gameStoreReady}
+		<Loading />
+	{:else}
+		{#each filteredGames as game, gameIndex}
+			<GameCard item={game} />
+		{/each}
+	{/if}
 </div>

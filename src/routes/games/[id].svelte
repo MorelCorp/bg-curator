@@ -31,11 +31,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- <h1 class="text-4xl text-center my-8 uppercase">{game.name}</h1>
-<p>
-	<img src={game.bgg.thumbnail} alt={game.name} />
-	<a class="link" href={``} target="_blank">Link to BoardgameGeek.com</a>
-
-  onclick={`location.href=https://www.boardgamegeek.com/${game.bgg.href}`}
-</p> -->
